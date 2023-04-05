@@ -1,0 +1,97 @@
+@mixin flex_($val){
+    display: flex;
+    flex-direction: $val;
+}
+@mixin padding_a($top,$l_r){
+    padding: $top $l_r;
+    text-decoration: none;
+    color: black;
+}
+@mixin renderTitle{
+    text-align:left;
+    margin: 100px 0;
+    color: peru;
+    border-bottom: 5px solid yellowgreen;
+}
+$weatherColor:lightblue;
+.active{
+    color: blue !important;
+    border-bottom:2px solid green !important;
+    transition: 1s;
+    font-size: 18px !important;
+}
+// ------- top || side nav-----
+.nav{
+    @include flex_(row);
+    width: 100%;
+}
+.top{
+    width: 80%;
+}
+.side{
+    width: 20%;
+}
+.top_nav{
+    @include flex_(row);
+    justify-content: space-between;
+    align-items: center;
+    a{
+        margin-left: 10px;
+        @include padding_a(12px, 16px);
+
+    }
+}
+.side_nav{
+    @include flex_(column);
+    overflow: scroll;
+    a{
+        margin-top: 30px;
+        @include padding_a(16px,10px);
+        width: 50%;
+        border-bottom: 1px solid orange
+
+    }
+}
+// ------ page render section------
+.home{
+    @include renderTitle;
+}
+.weather_main{
+    @include flex_(column);
+    align-items: center;
+    margin-top: 60px;
+}
+.w_container{
+    width: 35%;
+    height: 400px;
+    border: 1px solid gray;
+    box-shadow: -1px 1px 6px 3px darkblue;
+    padding: 12px;
+    background-color:$weatherColor;
+    @include flex_(column);
+    align-items: center;
+    input{
+        padding: 8px 16px;
+        text-align: center;
+        border-radius: 5px;
+        border: 2px solid darkblue;
+    }
+}
+.w_details{
+    margin-top: 40px;
+    text-align: center;
+}
+.desktop{
+    display: none;
+}
+* h2{
+    margin: 10px;
+}
+@media only screen and (max-width:800px) {
+    #root{
+        display: none;
+    }
+    .desktop{
+        display: block;
+    }
+}
